@@ -45,8 +45,11 @@
 					</div>
 				</div>
 				<div class="navbar-nav w-100">
-					<a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+					<a href="<?=URL?>/home" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 				</div>
 			</nav>
+			<div class="d-flex align-items-center ms-4 mb-4"> 
+				<div id="calender"></div>
+			</div>
 		</div>
 		<!-- Sidebar End -->
