@@ -19,6 +19,8 @@ class ComposerStaticInitd64912e5182b4a30253eed2e839a516f
         'Controller' => __DIR__ . '/../..' . '/app/Core/Controller.php',
         'Database' => __DIR__ . '/../..' . '/app/Core/Database.php',
         'Device' => __DIR__ . '/../..' . '/app/Models/Device.php',
+        'Migration' => __DIR__ . '/../..' . '/app/Models/Migration.php',
+        'MigrationManager' => __DIR__ . '/../..' . '/app/Core/MigrationManager.php',
         'Model' => __DIR__ . '/../..' . '/app/Core/Model.php',
         'Notification' => __DIR__ . '/../..' . '/app/Models/Notification.php',
         'Request' => __DIR__ . '/../..' . '/app/Core/Request.php',

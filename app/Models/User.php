@@ -15,19 +15,4 @@ class User
         'Email',
         'Image'
     ];
-
-    public function createDatabaseTables()
-    {
-        $sql = "
-                    CREATE TABLE IF NOT EXISTS `users` (
-                        `Id` int NOT NULL AUTO_INCREMENT,
-                        `Username` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-                        `FullName` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-                        `Email` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-                        `Image` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-                        PRIMARY KEY (`Id`)
-                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-                ";
-        $this->query($sql);
-    }
 }

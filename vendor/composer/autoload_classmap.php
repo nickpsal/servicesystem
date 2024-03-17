@@ -13,6 +13,8 @@ return array(
     'Controller' => $baseDir . '/app/Core/Controller.php',
     'Database' => $baseDir . '/app/Core/Database.php',
     'Device' => $baseDir . '/app/Models/Device.php',
+    'Migration' => $baseDir . '/app/Models/Migration.php',
+    'MigrationManager' => $baseDir . '/app/Core/MigrationManager.php',
     'Model' => $baseDir . '/app/Core/Model.php',
     'Notification' => $baseDir . '/app/Models/Notification.php',
     'Request' => $baseDir . '/app/Core/Request.php',

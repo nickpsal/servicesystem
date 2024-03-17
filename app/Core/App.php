@@ -4,7 +4,8 @@
         private $method = 'index';
         public function __construct()
         {
-            $this->CreateDatabaseTables();
+            $migrationManager = new MigrationManager();
+            $migrationManager->getMigration();
             $url = $this->splitURL();
             $filename = "../app/Controllers/" . ucfirst($url[0]) . ".php";
             if (file_exists($filename)){
@@ -33,22 +34,5 @@
                 $url = $_GET['url'];
                 return (explode('/', filter_var(trim($url, "/"), FILTER_SANITIZE_URL)));
             }
-        }
-
-        private function CreateDatabaseTables() {
-            $client = new Client();
-            $user = new User();
-            $branch = new Branch();
-            $device = new Device();
-            $notifications = new Notification();
-            $tickets = new Ticket();
-            $user_branch = new User_branch();
-            $client->createDatabaseTables();
-            $device->createDatabaseTables();
-            $user->createDatabaseTables();
-            $notifications->createDatabaseTables();
-            $tickets->createDatabaseTables();
-            $branch->createDatabaseTables();
-            $user_branch->createDatabaseTables();
         }
     }
