@@ -7,9 +7,9 @@ class MigrationManager
     {
         $migration = new Migration();
         $checkTable = $migration->checkifTableExists('migration');
-        if (!$checkTable) {
+        if ($checkTable == false) {
             $createMigrationTable = '../App/migrations/migration.sql';
-            $this->executeInitialMigration($createMigrationTable);
+            $this->executeMigration($createMigrationTable);
         }
     }
 
@@ -18,30 +18,21 @@ class MigrationManager
         $migration = new Migration();
         $executed_migrations = $migration->find_all_data_from_db();
         $migration_files = glob($this->migrationDIR  . '/*.sql');
-        foreach ($migration_files as $migrationFile) {
-            $migrationName = basename($migrationFile);
-            foreach ($executed_migrations as $migr) {
-                if ($migrationName != $migr->Name) {
-                   $this->executeMigration($migrationName, $migrationFile);
-                }
-            }
+        $executed_filenames = array_map(function ($migration) {
+            return basename($migration->Name);
+        }, $executed_migrations);
+        $unexecuted_files = array_filter($migration_files, function ($file) use ($executed_filenames) {
+            return !in_array(basename($file), $executed_filenames);
+        });
+        foreach ($unexecuted_files as $file) {
+           $this->executeMigration($file);
         }
     }
 
-    public function executeInitialMigration($createMigrationTable)
-    {
+    public function executeMigration($file) {
         $migration = new Migration();
-        $migrationName = basename($createMigrationTable);
-        $sqlContents = file_get_contents($createMigrationTable);
-        $migration->query($sqlContents);
-        $data['Name'] = $migrationName;
-        $migration->insert_data_to_db($data);
-    }
-
-    public function executeMigration($migrationName, $migrationFile)
-    {
-        $migration = new Migration();
-        $sqlContents = file_get_contents($migrationFile);
+        $migrationName = basename($file);
+        $sqlContents = file_get_contents($file);
         $migration->query($sqlContents);
         $data['Name'] = $migrationName;
         $migration->insert_data_to_db($data);
