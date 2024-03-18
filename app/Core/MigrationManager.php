@@ -25,11 +25,12 @@ class MigrationManager
             return !in_array(basename($file), $executed_filenames);
         });
         foreach ($unexecuted_files as $file) {
-           $this->executeMigration($file);
+            $this->executeMigration($file);
         }
     }
 
-    public function executeMigration($file) {
+    public function executeMigration($file)
+    {
         $migration = new Migration();
         $migrationName = basename($file);
         $sqlContents = file_get_contents($file);
