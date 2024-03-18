@@ -3,7 +3,7 @@
         'name' => 'nickp/php_mvc_framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cf57e7a567d32e19c58cc8df50534928eb4b5f58',
+        'reference' => '9db0489c40afae73c6e49b4917b1e017ef505f1b',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'nickp/php_mvc_framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cf57e7a567d32e19c58cc8df50534928eb4b5f58',
+            'reference' => '9db0489c40afae73c6e49b4917b1e017ef505f1b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

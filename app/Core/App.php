@@ -8,11 +8,15 @@ class App
         $migrationManager = new MigrationManager();
         $url = $this->splitURL();
         $filename = "../app/Controllers/" . ucfirst($url[0]) . ".php";
-        if (file_exists($filename)) {
+        if (!empty($_SESSION) && file_exists($filename)) {
             $this->controller = ucfirst($url[0]);
             unset($url[0]);
             require $filename;
-        } else {
+        } else if (empty($_SESSION) && file_exists($filename)) {
+            $this->controller = "Signin";
+            require "../app/Controllers/Signin.php";
+            $url['url'] = '';
+        }else {
             $this->controller = "_404";
             require "../app/Controllers/_404.php";
         }
@@ -22,8 +26,9 @@ class App
                 $this->method = $url[1];
                 unset($url[1]);
             }
+            call_user_func_array([$controller, $this->method], [$url]);
         }
-        call_user_func_array([$controller, $this->method], [$url]);
+        call_user_func_array([$controller, $this->method], []);
     }
 
     //χωρίζουμε το url σε λίσατ
