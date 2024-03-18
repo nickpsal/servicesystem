@@ -8,6 +8,6 @@ class _404
         $data['title'] = 'Service System';
         $data['pageTitle'] = '404 Page not found';
         //δείχνουμε την view μαζι με τα δεδομένα
-        $this->view('404', $data);
+        $this->view_Pahe_without_Sidebar('404', $data);
     }
 }
