@@ -65,9 +65,10 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
   `FullName` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
   `Image` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -96,4 +97,12 @@ ALTER TABLE `tickets`
 ALTER TABLE `user_branch`
   ADD CONSTRAINT `user_branch_ibfk_1` FOREIGN KEY (`BranchId`) REFERENCES `branch` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_branch_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+INSERT INTO `users` (`Id`, `FullName`, `Username`, `Email`, `Password`, `Image`) VALUES (NULL, 'Nikolaos Psaltakis', 'npsaltakis', 'nickpsal@gmail.com', '$2y$10$bdPM4xvq20eg2LlwHeAfYemCYzYBL32T9io6bMZG5XaVBd49nFGSK', '');
+
+INSERT INTO `branch` (`Id`, `Name`) VALUES (NULL, 'Administrator'), (NULL, 'Supervisor');
+INSERT INTO `branch` (`Id`, `Name`) VALUES (NULL, 'User');
+
+INSERT INTO `user_branch` (`Id`, `BranchId`, `UserId`) VALUES (NULL, '1', '1');
+
 COMMIT;
