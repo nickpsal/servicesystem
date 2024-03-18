@@ -11,6 +11,7 @@ class MigrationManager
             $createMigrationTable = '../App/migrations/migration.sql';
             $this->executeMigration($createMigrationTable);
         }
+        $this->getMigration();
     }
 
     public function getMigration()

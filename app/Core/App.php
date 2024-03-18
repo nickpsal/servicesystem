@@ -6,7 +6,6 @@ class App
     public function __construct()
     {
         $migrationManager = new MigrationManager();
-        $migrationManager->getMigration();
         $url = $this->splitURL();
         $filename = "../app/Controllers/" . ucfirst($url[0]) . ".php";
         if (file_exists($filename)) {
